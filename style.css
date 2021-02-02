@@ -1,3 +1,14 @@
+html, body {
+  cursor: url(./close-outline.svg);
+  margin: 0px;
+}
+
+body {
+  height: 100vh;
+  width : 100vw;
+  position: absolute;
+}
+
 #board {
   background-color: black;
   border-collapse: collapse;
@@ -19,32 +30,52 @@ td {
   height: 3em;
 }
 
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .intro{
   background-color: black;
+  color: white;
   width: 0%;
   height: 0%;
+  opacity: 0;
   position: absolute;
   animation-name: fadeIntro;
-  animation-duration: 5s;
-  animation-delay: 0s;
+  animation-duration: 2.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .welcome{
   display: flex;
   flex-flow: column;
   align-items: center;
-  color: white
 }
 
 /* Animations */
 
 @keyframes fadeIntro {
-  from {
-    width: 100%;
-    height: 100%;
+  0% {
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    color: black;
   }
-  to {
-    width: 0px;
-    height: 0px;
+  80%{
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    color: white;
+  }
+  100% {
+    width: 100vw;
+    height: 0;
+    opacity: 0;
   }
 }
