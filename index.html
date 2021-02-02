@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Tic-Tac-Toe</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <h1>Tic-Tac-Toe</h1>
+    </header>
+    <section class="game">
+      <article class="hud">
+        <span>Round: <span id="roundCounter">1</span></span>
+        <span>Current Player: <span id="currentPlayer">O</span></span>
+      </article>
+      <table id="board">
+        <tr data-row="0">
+          <td style="border-top: 0; border-left: 0" data-col="0"></td>
+          <td style="border-top: 0;" data-col="1"></td>
+          <td style="border-top: 0; border-right: 0" data-col="2"></td>
+        </tr>
+        <tr data-row="1">
+          <td style="border-left: 0" data-col="0"></td>
+          <td data-col="1"></td>
+          <td style="border-right: 0" data-col="2"></td>
+        </tr>
+        <tr data-row="2">
+          <td style="border-bottom: 0; border-left: 0" data-col="0"></td>
+          <td style="border-bottom: 0" data-col="1"></td>
+          <td style="border-bottom: 0; border-right: 0" data-col="2"></td>
+        </tr>
+      </table>
+    </section>
+    ,<script src="board.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
