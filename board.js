@@ -42,10 +42,17 @@ class Board {
     this.winner = this.player;
     this.wins[this.player] += 1;
     const event = new CustomEvent('update-scoreboard');
+    document.dispatchEvent(event);
   }
 
-  countMoves() {
-    const moves = this.table.querySelectorAll();
+  reset() {
+    const places = this.table.querySelectorAll('td');
+    places.forEach((place) => {
+      place.innerText = '';
+    });
+    this.countMoves = 0;
+    const event = new CustomEvent('reset');
+    document.dispatchEvent(event);
   }
 
   checkWin() {
