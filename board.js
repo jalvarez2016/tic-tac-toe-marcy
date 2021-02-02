@@ -44,8 +44,13 @@ class Board {
     const event = new CustomEvent("update-scoreboard");
   }
 
-  countMoves(){
-    const moves = this.table.querySelectorAll()
+  reset(){
+    const places = this.table.querySelectorAll("td");
+    places.forEach(place => {
+      place.innerText = "";
+    });
+    this.countMoves = 0;
+    const event = new CustomEvent("reset");
   }
 
   checkWin() {
