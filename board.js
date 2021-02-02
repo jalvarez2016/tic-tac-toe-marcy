@@ -21,11 +21,7 @@ class Board {
   }
 
   changeTurn() {
-    if (player === 'O') {
-      player = 'X';
-    } else {
-      player = 'O';
-    }
+    this.player = this.player === 'O' ? 'X' : 'O';
   }
 
   updateBoard(e) {
