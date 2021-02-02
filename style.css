@@ -1,21 +1,50 @@
+html {background-color: #f0c8ae;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='126' height='84' viewBox='0 0 126 84'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%236b0f0f' fill-opacity='0.4'%3E%3Cpath d='M126 83v1H0v-2h40V42H0v-2h40V0h2v40h40V0h2v40h40V0h2v83zm-2-1V42H84v40h40zM82 42H42v40h40V42zm-50-6a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm96 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm-42 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm30-12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM20 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm12 24a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM8 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM8 78a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm12 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm54 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM50 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM50 78a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm54-12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm12 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM92 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM92 78a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24-42a4 4 0 1 1 0-8 4 4 0 0 1 0 8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+html, body {
+  cursor: url("./close-outline.svg"), auto;
+  margin: 0px;
+}
+
+body {
+  height: 100vh;
+  width : 100vw;
+  position: absolute;
+}
+
 #board {
   background-color: black;
   border-collapse: collapse;
 }
 
+header h1 {
+  margin: 0 0 0.5em 0;
+  text-align: center;
+}
+
 .hud {
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
 
 .lower-hud {
+  margin-top: 0.5em;
   display: flex;
 }
 
 .scoreboard {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+}
+
+.button-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
 }
 
 td {
@@ -27,32 +56,63 @@ td {
   height: 10em;
 }
 
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inner-container{
+  /* z-index: -1; */
+  padding: 50px;
+  background-color: rgba(255, 255, 255, .1);
+  border-radius: 20px;
+  backdrop-filter: blur(3px);
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(44, 41, 38, 0.3);
+}
+
 .intro{
+  z-index: 2;
   background-color: black;
+  color: white;
   width: 0%;
   height: 0%;
+  opacity: 0;
   position: absolute;
   animation-name: fadeIntro;
-  animation-duration: 5s;
-  animation-delay: 0s;
+  animation-duration: 2.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .welcome{
   display: flex;
   flex-flow: column;
   align-items: center;
-  color: white
 }
 
 /* Animations */
 
 @keyframes fadeIntro {
-  from {
-    width: 100%;
-    height: 100%;
+  0% {
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    color: black;
   }
-  to {
-    width: 0px;
-    height: 0px;
+  80%{
+    width: 100vw;
+    height: 100vh;
+    opacity: 1;
+    color: white;
+  }
+  100% {
+    width: 100vw;
+    height: 0;
+    opacity: 0;
   }
 }
