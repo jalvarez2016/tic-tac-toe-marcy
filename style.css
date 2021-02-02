@@ -23,6 +23,11 @@ button {
   border-width: 0;
 }
 
+.game {
+  display: flex;
+  justify-content: center;
+}
+
 #board {
   background-color: black;
   border-collapse: collapse;
@@ -62,8 +67,8 @@ td {
   text-align: center;
   background-color: white;
   border: 1px solid black;
-  width: 10em;
-  height: 10em;
+  width: 3em;
+  height: 3em;
 }
 
 .container {
