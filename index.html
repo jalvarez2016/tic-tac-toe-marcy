@@ -14,42 +14,44 @@
       </div>
     </div>
     <div class="container">
-      <header>
-        <h1>Tic-Tac-Toe</h1>
-      </header>
-      <section class="hud">
-        <span>Round: <span id="roundCounter">1</span></span>
-        <span>Current Player: <span id="currentPlayer">O</span></span>
-      </section>
-      <section class="game">
-        <table id="board">
-          <tr data-row="0">
-            <td style="border-top: 0; border-left: 0" data-col="0"></td>
-            <td style="border-top: 0;" data-col="1"></td>
-            <td style="border-top: 0; border-right: 0" data-col="2"></td>
-          </tr>
-          <tr data-row="1">
-            <td style="border-left: 0" data-col="0"></td>
-            <td data-col="1"></td>
-            <td style="border-right: 0" data-col="2"></td>
-          </tr>
-          <tr data-row="2">
-            <td style="border-bottom: 0; border-left: 0" data-col="0"></td>
-            <td style="border-bottom: 0" data-col="1"></td>
-            <td style="border-bottom: 0; border-right: 0" data-col="2"></td>
-          </tr>
-        </table>
-      </section>
-      <section class="lower-hud">
-        <article class="scoreboard">
-          <span>O Wins:<span id="oWins">0</span></span>
-          <span>X Wins:<span id="xWins">0</span></span>
-          <span>Draws:<span id="draws">0</span></span>
-        </article>
-        <article class="button-menu">
-          <button id="reset">Reset</button>
-        </article>
-      </section>
+      <div class="inner-container">
+        <header>
+          <h1>Tic-Tac-Toe</h1>
+        </header>
+        <section class="hud">
+          <span>Round: <span id="roundCounter">1</span></span>
+          <span>Current Player: <span id="currentPlayer">O</span></span>
+        </section>
+        <section class="game">
+          <table id="board">
+            <tr data-row="0">
+              <td style="border-top: 0; border-left: 0" data-col="0"></td>
+              <td style="border-top: 0;" data-col="1"></td>
+              <td style="border-top: 0; border-right: 0" data-col="2"></td>
+            </tr>
+            <tr data-row="1">
+              <td style="border-left: 0" data-col="0"></td>
+              <td data-col="1"></td>
+              <td style="border-right: 0" data-col="2"></td>
+            </tr>
+            <tr data-row="2">
+              <td style="border-bottom: 0; border-left: 0" data-col="0"></td>
+              <td style="border-bottom: 0" data-col="1"></td>
+              <td style="border-bottom: 0; border-right: 0" data-col="2"></td>
+            </tr>
+          </table>
+        </section>
+        <section class="lower-hud">
+          <article class="scoreboard">
+            <span>O Wins:<span id="oWins">0</span></span>
+            <span>X Wins:<span id="xWins">0</span></span>
+            <span>Draws:<span id="draws">0</span></span>
+          </article>
+          <article class="button-menu">
+            <button id="reset">Reset</button>
+          </article>
+        </section>
+      </div>
     </div>
     <script src="board.js"></script>
     <script src="script.js"></script>
