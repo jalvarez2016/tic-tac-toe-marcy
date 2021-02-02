@@ -3,6 +3,12 @@
   border-collapse: collapse;
 }
 
+.hud {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .lower-hud {
   display: flex;
 }
@@ -13,10 +19,12 @@
 }
 
 td {
+  vertical-align: middle;
+  text-align: center;
   background-color: white;
   border: 1px solid black;
-  width: 3em;
-  height: 3em;
+  width: 10em;
+  height: 10em;
 }
 
 .intro{
