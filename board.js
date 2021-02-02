@@ -53,6 +53,7 @@ class Board {
       place.innerText = '';
     });
     this.countMoves = 0;
+    this.winner = null;
     const event = new CustomEvent('reset');
     document.dispatchEvent(event);
   }
