@@ -55,7 +55,6 @@ class Board {
       place.innerText = '';
     });
     this.countMoves = 0;
-    this.winner = null;
     const event = new CustomEvent('reset');
     if (this.winner !== null) this.round += 1;
     this.winner = null;
