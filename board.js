@@ -3,7 +3,12 @@ class Board {
     this.table = table;
     this.boardState = [[], [], []];
     this.player = 'O';
+    this.countMoves = 0;
     this.winner = null;
+    this.wins = {
+      "O":0,
+      "X":0,
+    }
   }
 
   initBoard() {
@@ -17,66 +22,75 @@ class Board {
       } else if (this.boardState[2].length < 3) {
         this.boardState[2].push(place);
       }
-      // console.log(this.boardState);
     });
   }
 
   changeTurn() {
     this.player = this.player === 'O' ? 'X' : 'O';
+    this.countMoves += 1;
   }
 
   updateBoard(e) {
-    const places = this.table.querySelectorAll('td');
-    places.forEach((place, ind) => {
-      if(e.target === place){
-          let row = Math.floor(ind/3), col = ind - row;
-          this.boardState[row][col] = place;
-          console.log(place);
-      }
-    });
-    // console.log(this.boardState);
-    this.changeTurn();
+    if(!e.target.innerText && this.winner === null){
+      e.target.innerText = this.player;
+      this.checkWin();
+      this.changeTurn();
+    }
   }
 
-  checkWin() {}
+  renderWinner(el1, el2, el3){
+    this.winner = this.player;
+    this.wins[this.player] += 1;
+    const event = new CustomEvent("update-scoreboard");
+  }
+
+  countMoves(){
+    const moves = this.table.querySelectorAll()
+  }
+
+  checkWin() {
+    if (this.boardState[0][0].innerText === this.boardState[0][1].innerText
+        && this.boardState[0][0].innerText === this.boardState[0][2].innerText
+        && this.boardState[0][0].innerText !== "") {
+
+        this.renderWinner(this.boardState[0][0].innerText, this.boardState[0][1].innerText, this.boardState[0][2].innerText);
+      } else if (this.boardState[1][0].innerText === this.boardState[1][1].innerText
+        && this.boardState[1][0].innerText === this.boardState[1][2].innerText
+        && this.boardState[1][0].innerText !== "") {
+        this.renderWinner(this.boardState[1][0].innerText, this.boardState[1][1].innerText, this.boardState[1][2].innerText);
+      } else if (this.boardState[2][0].innerText === this.boardState[2][1].innerText
+        && this.boardState[2][0].innerText === this.boardState[2][2].innerText
+        && this.boardState[2][0].innerText !== "") {
+        this.renderWinner(this.boardState[2][0].innerText, this.boardState[2][1].innerText, this.boardState[2][2].innerText);
+      } else if (this.boardState[0][0].innerText === this.boardState[1][0].innerText
+        && this.boardState[0][0].innerText === this.boardState[2][0].innerText
+        && this.boardState[0][0].innerText !== "") {
+        this.renderWinner(this.boardState[0][0].innerText, this.boardState[1][0].innerText, this.boardState[2][0].innerText);
+      } else if (this.boardState[0][1].innerText === this.boardState[1][1].innerText
+        && this.boardState[0][1].innerText === this.boardState[2][1].innerText
+        && this.boardState[0][1].innerText !== "") {
+        this.renderWinner(this.boardState[0][1].innerText, this.boardState[1][1].innerText, this.boardState[2][1].innerText);
+      } else if (this.boardState[0][2].innerText === this.boardState[1][2].innerText
+        && this.boardState[0][2].innerText === this.boardState[2][2].innerText
+        && this.boardState[0][2].innerText !== "") {
+        this.renderWinner(this.boardState[0][2].innerText, this.boardState[1][2].innerText, this.boardState[2][2].innerText);
+      } else if (this.boardState[0][0].innerText === this.boardState[1][1].innerText
+        && this.boardState[0][0].innerText === this.boardState[2][2].innerText
+        && this.boardState[0][0].innerText !== "") {
+        this.renderWinner(this.boardState[0][0].innerText, this.boardState[1][1].innerText, this.boardState[2][2].innerText);
+      } else if (this.boardState[0][2].innerText === this.boardState[1][1].innerText
+        && this.boardState[0][2].innerText === this.boardState[2][0].innerText
+        && this.boardState[0][2].innerText !== "") {
+        this.renderWinner(this.boardState[0][2].innerText, this.boardState[1][1].innerText, this.boardState[2][0].innerText);
+      }
+      if (this.countMoves === 9 && this.winner === null) {
+        this.winner = 'Draw';
+        // this.draws += 1;
+        // this.updateCounters();
+        // this.gameEnd();
+      }
+      
+  }
 }
 
-// if (this.matrix[0][0] === this.matrix[0][1]
-//   && this.matrix[0][0] === this.matrix[0][2]
-//   && this.matrix[0][0] !== undefined) {
-//   this.renderWinner(this.elMatrix[0][0], this.elMatrix[0][1], this.elMatrix[0][2]);
-// } else if (this.matrix[1][0] === this.matrix[1][1]
-//   && this.matrix[1][0] === this.matrix[1][2]
-//   && this.matrix[1][0] !== undefined) {
-//   this.renderWinner(this.elMatrix[1][0], this.elMatrix[1][1], this.elMatrix[1][2]);
-// } else if (this.matrix[2][0] === this.matrix[2][1]
-//   && this.matrix[2][0] === this.matrix[2][2]
-//   && this.matrix[2][0] !== undefined) {
-//   this.renderWinner(this.elMatrix[2][0], this.elMatrix[2][1], this.elMatrix[2][2]);
-// } else if (this.matrix[0][0] === this.matrix[1][0]
-//   && this.matrix[0][0] === this.matrix[2][0]
-//   && this.matrix[0][0] !== undefined) {
-//   this.renderWinner(this.elMatrix[0][0], this.elMatrix[1][0], this.elMatrix[2][0]);
-// } else if (this.matrix[0][1] === this.matrix[1][1]
-//   && this.matrix[0][1] === this.matrix[2][1]
-//   && this.matrix[0][1] !== undefined) {
-//   this.renderWinner(this.elMatrix[0][1], this.elMatrix[1][1], this.elMatrix[2][1]);
-// } else if (this.matrix[0][2] === this.matrix[1][2]
-//   && this.matrix[0][2] === this.matrix[2][2]
-//   && this.matrix[0][2] !== undefined) {
-//   this.renderWinner(this.elMatrix[0][2], this.elMatrix[1][2], this.elMatrix[2][2]);
-// } else if (this.matrix[0][0] === this.matrix[1][1]
-//   && this.matrix[0][0] === this.matrix[2][2]
-//   && this.matrix[0][0] !== undefined) {
-//   this.renderWinner(this.elMatrix[0][0], this.elMatrix[1][1], this.elMatrix[2][2]);
-// } else if (this.matrix[0][2] === this.matrix[1][1]
-//   && this.matrix[0][2] === this.matrix[2][0]
-//   && this.matrix[0][2] !== undefined) {
-//   this.renderWinner(this.elMatrix[0][2], this.elMatrix[1][1], this.elMatrix[2][0]);
-// }
-// if (this.moveCount === 9 && this.winner === null) {
-//   this.winner = 'Draw';
-//   this.draws += 1;
-//   this.updateCounters();
-//   this.gameEnd();
-// }
+// 
