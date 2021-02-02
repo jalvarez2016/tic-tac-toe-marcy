@@ -9,6 +9,7 @@ class Board {
   initBoard() {
     const places = this.table.querySelectorAll('td');
     places.forEach((place, ind) => {
+      place.addEventListener("click", this.updateBoard.bind(this))
       if (this.boardState[0].length < 3) {
         this.boardState[0].push(place);
       } else if (this.boardState[1].length < 3) {
@@ -16,7 +17,7 @@ class Board {
       } else if (this.boardState[2].length < 3) {
         this.boardState[2].push(place);
       }
-      console.log(this.boardState);
+      // console.log(this.boardState);
     });
   }
 
@@ -26,10 +27,14 @@ class Board {
 
   updateBoard(e) {
     const places = this.table.querySelectorAll('td');
-    places.forEach((places) => {
-      // update boardstate & table
-      // this.
+    places.forEach((place, ind) => {
+      if(e.target === place){
+          let row = Math.floor(ind/3), col = ind - row;
+          this.boardState[row][col] = place;
+          console.log(place);
+      }
     });
+    // console.log(this.boardState);
     this.changeTurn();
   }
 
