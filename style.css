@@ -3,6 +3,15 @@
   border-collapse: collapse;
 }
 
+.lower-hud {
+  display: flex;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+}
+
 td {
   background-color: white;
   border: 1px solid black;
