@@ -1,0 +1,11 @@
+#board {
+  background-color: black;
+  border-collapse: collapse;
+}
+
+td {
+  background-color: white;
+  border: 1px solid black;
+  width: 3em;
+  height: 3em;
+}
