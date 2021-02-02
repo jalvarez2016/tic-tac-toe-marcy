@@ -28,6 +28,8 @@ class Board {
   changeTurn() {
     this.player = this.player === 'O' ? 'X' : 'O';
     this.countMoves += 1;
+    const event = new CustomEvent("change-player");
+    document.dispatchEvent(event);
   }
 
   updateBoard(e) {

@@ -18,3 +18,13 @@ td {
   width: 3em;
   height: 3em;
 }
+
+.intro{
+  background-color: black;
+  /* animation-name: ; */
+}
+
+.welcome{
+  display: flex;
+  /* justify-content: ; */
+}
