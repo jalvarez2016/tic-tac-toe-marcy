@@ -42,6 +42,7 @@ class Board {
     this.winner = this.player;
     this.wins[this.player] += 1;
     const event = new CustomEvent("update-scoreboard");
+    document.dispatchEvent(event);
   }
 
   reset(){
@@ -51,6 +52,7 @@ class Board {
     });
     this.countMoves = 0;
     const event = new CustomEvent("reset");
+    document.dispatchEvent(event);
   }
 
   checkWin() {
