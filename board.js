@@ -4,10 +4,12 @@ class Board {
     this.boardState = [[], [], []];
     this.player = 'O';
     this.countMoves = 0;
+    this.round = 1;
     this.winner = null;
     this.wins = {
       O: 0,
       X: 0,
+      draws: 0
     };
   }
 
@@ -27,7 +29,6 @@ class Board {
 
   changeTurn() {
     this.player = this.player === 'O' ? 'X' : 'O';
-    this.countMoves += 1;
     const event = new CustomEvent('change-player');
     document.dispatchEvent(event);
   }
@@ -35,6 +36,7 @@ class Board {
   updateBoard(e) {
     if (!e.target.innerText && this.winner === null) {
       e.target.innerText = this.player;
+      this.countMoves += 1;
       this.checkWin();
       this.changeTurn();
     }
@@ -54,6 +56,8 @@ class Board {
     });
     this.countMoves = 0;
     const event = new CustomEvent('reset');
+    if (this.winner !== null) this.round += 1;
+    this.winner = null;
     document.dispatchEvent(event);
   }
 
@@ -92,10 +96,10 @@ class Board {
       this.renderWinner(this.boardState[0][2].innerText, this.boardState[1][1].innerText, this.boardState[2][0].innerText);
     }
     if (this.countMoves === 9 && this.winner === null) {
-      this.winner = 'Draw';
-      // this.draws += 1;
-      // this.updateCounters();
-      // this.gameEnd();
+      this.winner = 'draw';
+      this.wins.draws += 1;
+      const event = new CustomEvent('update-scoreboard');
+      document.dispatchEvent(event);
     }
   }
 }
